@@ -42,10 +42,16 @@ class FormMain extends Component {
                         id="Task" 
                         placeholder="Task"
                         autoFocus
-                        value={nameNewTask} 
+                        value={nameNewTask}
+                        required
                         />
                     
-                    <input className="col-sm-4 btn btn-info" type="submit" value="Add task" />
+                    <input 
+                        className="col-sm-4 btn btn-info" 
+                        type="submit" 
+                        value="Add task"
+                        disable = { nameNewTask.trim().length === 0 ? true : false }
+                    />
                 </form>
             </Fragment>
         );

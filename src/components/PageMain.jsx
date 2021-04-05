@@ -26,20 +26,25 @@ class PageMain extends Component {
         this.setState({
             listTasks:[...this.state.listTasks, taskToAdd]
         })
+
         this.setState({
             nameNewTask:""
         })
     }
 
-    handleDeleteTask = () => {
+    handleDeleteTask = (idOfTask) => {
+        const tasksAtTheMoment = this.state.listTasks
+        const arrayWithoutTask = tasksAtTheMoment.filter( (item) => item.id !== idOfTask )
 
+        this.setState({
+            listTasks: arrayWithoutTask
+        })
     }
-
 
     render() {
         
         return (
-            <main className="container mx-auto mt-4 border border-dark w-50">
+            <main className="container mx-auto mt-3 border border-dark rounded w-50">
                 
                 <FormMain 
                     nameNewTask={this.state.nameNewTask}
@@ -49,6 +54,7 @@ class PageMain extends Component {
                 
                 <ListTask 
                     listTasks={this.state.listTasks}
+                    onDeleteTask={this.handleDeleteTask}
                 />
             </main>
         );
